@@ -1,0 +1,63 @@
+    <?php echo Form::open(array('url' => 'fichas/cursos/'.$ficha->id, 'class'=>'form-horizontal')); ?>
+    <div class="row">
+        <div class='form-group col-md-12'>
+        	<?php echo Form::label('descricao', 'Descrição: '); ?>
+        	<div>
+        		<?php echo Form::text('descricao', null, array('class'=>'form-control', 'placeholder'=>'Descrição do curso')); ?>
+        	</div>
+        </div>
+
+		<div class="form-group col-md-12">
+        	<?php echo Form::label('instituicao', 'Instituição de ensino: '); ?>
+        	<?php echo Form::text('instituicao', null, array('class'=>'form-control', 'placeholder'=>'Instituição')); ?>
+        </div>
+
+        <div class="form-group col-md-12">
+           	<div class="col-md-6">
+               	<?php echo Form::label('ano', 'Ano: '); ?>
+               	<?php echo Form::text('ano', null, array('class'=>'form-control', 'placeholder'=>'Ano')); ?>
+        	</div>
+            <div class="form-group col-md-6">
+              	<?php echo Form::label('concluido', 'Concluido: '); ?>
+            	<div class="form-control">
+                	<?php echo Form::radio('concluido', 1, false); ?> Sim
+                	<?php echo Form::radio('concluido', 0, false); ?> Não
+                </div>
+            </div>
+      	</div>
+ 	    <div class    ="form-actions">
+            <?php echo Form::submit('Gravar', array('class' => 'btn btn-info')); ?>
+        </div>
+ 	</div>
+    <?php echo Form::close(); ?>
+      
+<?php if (count($ficha->cursos)): ?>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Ficha_id</th>
+				<th>Descricao do Curso</th>
+				<th>Instituicao</th>
+				<th>Ano</th>
+				<th>Concluido</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<?php foreach ($ficha->cursos as $curso): ?>
+				<tr>
+					<td><?php echo e($curso->ficha_id); ?></td>
+					<td><?php echo e($curso->descricao); ?></td>
+					<td><?php echo e($curso->instituicao); ?></td>
+					<td><?php echo e($curso->ano); ?></td>
+					<td><?php echo e($curso->concluido); ?></td>
+                    <td><a href="/fichas/cursos/<?php echo $curso->id; ?>/delete">delete</a></td>
+                    <td></td>
+				</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+<?php else: ?>
+	Nenhum registro retornado.
+<?php endif; ?>
+

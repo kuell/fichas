@@ -1,0 +1,52 @@
+    <?php echo Form::open(array('url' => 'fichas/parentes/'.$ficha->id, 'class'=>'form-horizontal')); ?>
+    <div class="row">
+        <div class='form-group col-md-12'>
+        	<?php echo Form::label('nome', 'Nome: '); ?>
+        	<div>
+        		<?php echo Form::text('nome', null, array('class'=>'form-control', 'placeholder'=>'Nome do parente')); ?>
+        	</div>
+        </div>
+
+		<div class="form-group col-md-12">
+        	<?php echo Form::label('grau', 'Grau de Parentesco: '); ?>
+        	<?php echo Form::text('grau', null, array('class'=>'form-control', 'placeholder'=>'Grau de parentesco')); ?>
+        </div>
+
+        <div class="form-group col-md-12">
+            <?php echo Form::label('setor', 'Setor: '); ?>
+            <?php echo Form::text('setor', null, array('class'=>'form-control', 'placeholder'=>'Setor')); ?>
+        </div>
+        
+ 	    <div class    ="form-actions">
+            <?php echo Form::submit('Gravar', array('class' => 'btn btn-info')); ?>
+        </div>
+ 	</div>
+    <?php echo Form::close(); ?>
+
+<?php if (count($ficha->parentes)): ?>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Ficha_id</th>
+				<th>Nome</th>
+				<th>Setor</th>
+				<th>Grau de parentesco</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<?php foreach ($ficha->parentes as $parente): ?>
+				<tr>
+					<td><?php echo e($parente->ficha_id); ?></td>
+					<td><?php echo e($parente->nome); ?></td>
+					<td><?php echo e($parente->setor); ?></td>
+					<td><?php echo e($parente->grau); ?></td>
+                    <td><a href="/fichas/parentes/<?php echo $parente->id; ?>/delete">delete</a></td>
+                    <td></td>
+				</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+<?php else: ?>
+
+<?php endif; ?>

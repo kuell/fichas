@@ -1,0 +1,29 @@
+
+<?php $__env->startSection('main'); ?>
+	<div class="row">
+		<?php echo $__env->make('fichas._topo', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+	    <div class="panel panel-default">
+	    	<div class="panel-heading">
+		    	<div class="row">
+	                <div class="col-lg-11">Lista de Fichas</div>
+	                <div class="col-lg-1">
+	                    <a href="/fichas/create">
+	                        <span class="glyphicon glyphicon-plus"></span>
+	                    </a>
+	                </div>
+	            </div>
+            </div> 	<!-- /.panel-heading -->
+	        <div class="panel-body">
+	            <div class="table-responsive">
+	                <?php echo $__env->make('fichas._lista', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	            </div>
+	            <!-- /.table-responsive -->
+			</div>
+		</div>
+	</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

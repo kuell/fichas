@@ -1,0 +1,47 @@
+<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Sexo</th>
+                                            <th>Idade</th>
+                                            <th>Estado Civil</th>
+                                            <th>Carteira de Trabalho</th>
+                                            <th>Pis</th>
+                                            <th>Adicionar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach($fichas as $ficha): ?>
+                                        <tr class="odd gradeX">
+                                            <td><?php echo $ficha->nome; ?></td>
+                                            <td><?php echo $ficha->sexo; ?></td>
+                                            <td><?php echo $ficha->idade; ?> anos</td>
+                                            <td class="center"><?php echo $ficha->estado_civil; ?></td>
+                                            <td class="center"><?php echo $ficha->ctps; ?></td>
+                                            <td><?php echo $ficha->pis; ?></td>
+                                            <td>
+                                                <div class="dropdown">
+                                                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                                                    Ações
+                                                    <span class="caret"></span>
+                                                  </button>
+                                                  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                                    <li role="presentation">
+                                                        <?php echo link_to_route('fichas.edit', 'Editar', array($ficha->id), array('tabindex'=>'-1', 'rule'=>'menuitem')); ?>
+                                                    </li>
+                                                    <li role="presentation">
+                                                        <a href="#" rule="menuitem" tabindex="-1" onclick="window.open('/fichas/<?php echo $ficha->id; ?>', 'Print', 'channelmode=yes');">Visualizar</a>
+                                                    </li>
+                                                    <li role="presentation" class="divider"></li>
+                                                    <li role="presentation">
+                                                        <?php echo Form::open(array('method' => 'Excluir', 'route' => array('fichas.destroy', $ficha->id))); ?>
+                                                        <?php echo Form::submit('Delete', array('class'=>'btn btn-danger ', 'rule'=>'menuitem', 'tabindex'=>'-1', 'onclick'=>'javascript:return confirm(\'Tem certeza que deseja excluir este fichas?\')')); ?>
+                                                    <?php echo Form::close(); ?>
+                                                    </li>
+                                                  </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>

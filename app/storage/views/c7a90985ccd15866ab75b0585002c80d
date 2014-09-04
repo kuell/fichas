@@ -1,0 +1,46 @@
+<?php echo Form::open(array('url' => 'fichas/setors/'.$ficha->id, 'class'=>'form-horizontal')); ?>
+    <div class="row">
+        <div class='form-group col-md-12'>
+        	<?php echo Form::label('nome', 'Nome: '); ?>
+        	<div>
+        		<?php echo Form::select('setor_id', array('' => 'Selecione ...') + Setor::all()->lists('descricao', 'id'), null, array('class'=>'form-control')); ?>
+        	</div>
+        </div>
+
+		<div class="form-group col-md-12">
+        	<?php echo Form::label('cargo', 'Cargo pretendido: '); ?>
+        	<?php echo Form::text('cargo', null, array('class'=>'form-control', 'placeholder'=>'Cargo pretendido')); ?>
+        </div>
+        
+ 	    <div class    ="form-actions">
+            <?php echo Form::submit('Gravar', array('class' => 'btn btn-info')); ?>
+        </div>
+ 	</div>
+<?php echo Form::close(); ?>
+
+<?php if (count($ficha->setors)): ?>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Ficha_id</th>
+				<th>Setor</th>
+				<th>Cargo</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<?php foreach ($ficha->setors as $setor): ?>
+				<tr>
+					<td><?php echo e($setor->ficha_id); ?></td>
+					<td><?php echo e($setor->setor->descricao); ?></td>
+					<td><?php echo e($setor->cargo); ?></td>
+                    <td><a href="/fichas/setors/<?php echo $setor->id; ?>/delete">delete</a></td>
+                    <td></td>
+				</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+<?php else: ?>
+
+<?php endif; ?>
+

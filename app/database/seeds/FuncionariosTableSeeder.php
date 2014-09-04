@@ -1,0 +1,18 @@
+<?php
+
+class FuncionariosTableSeeder extends Seeder {
+
+	public function run()
+	{
+		// Uncomment the below to wipe the table clean before populating
+		// DB::table('funcionarios')->truncate();
+
+		$funcionarios = array(
+
+		);
+
+		// Uncomment the below to run the seeder
+		// DB::table('funcionarios')->insert($funcionarios);
+	}
+
+}

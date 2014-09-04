@@ -1,0 +1,238 @@
+<html>
+	<head>
+		<title></title>
+
+		<style type="text/css">
+		*{
+			font-family: Verdana;
+		}
+		table{
+			font-size: 14px;
+			border: 1px solid;
+		}
+
+		table th{
+			border-bottom: .5px solid;
+			text-align: left;
+		}
+		span strong{
+			font-size: 20px;
+
+			}	
+		</style>
+	</head>
+	<body>
+	<p>
+		<table cellpadding="0" cellspacing="0" style="width: 100%;">
+			<caption>
+					<span style="font-size:20px;"><strong>Dados Pessoais</strong></span>
+			</caption>
+				<tbody>
+					<tr>
+						<td align="center" rowspan="8" style="width:180px; height: 150px; ">
+							<?php if($ficha->img): ?>
+								<img alt="Sem Imagem" src="" style="width: 105px; height: 140px; align: center; " />
+							<?php else: ?>
+								<img alt="Sem Imagem" src="semfoto.jpg" style="width: 105px; height: 140px;" />
+							<?php endif; ?>
+						</td>
+						<td>
+							<strong>Nome:&nbsp;</strong><?php echo $ficha->nome; ?></td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Data Nascimento:&nbsp;</strong><?php echo $ficha->data_nascimento; ?> - <?php echo $ficha->idade; ?> anos</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Estado Civil:</strong> <?php echo $ficha->estado_civil; ?></td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Endereco:</strong> <?php echo $ficha->endereco; ?></td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Bairro:</strong> <?php echo $ficha->bairro; ?></td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Naturalidade:</strong> <?php echo $ficha->naturalidade; ?></td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Nacionalidade:</strong> <?php echo $ficha->nacionalidade; ?></td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Contato:</strong> <?php echo $ficha->contato; ?> - <?php echo $ficha->contato; ?></td>
+					</tr>
+				</tbody>
+		</table>
+	</p>
+	<p>
+		<table  cellpadding="1" cellspacing="1" style="width: 100%;">
+			<caption>
+					<span style="font-size:20px;"><strong>Documentação</strong></span>
+			</caption>
+				<tbody>
+					<tr>
+						<td style="width: 20%;"><strong>RG:</strong> <?php echo $ficha->rg; ?></td>
+						<td style="width: 20%;"><strong>CPF:</strong> <?php echo $ficha->cpf; ?></td>
+					</tr>
+					<tr>
+						<td style="width: 20%;"><strong>Titulo de Eleitor:</strong> <?php echo $ficha->titulo; ?></td>
+						<td style="width: 20%;"><strong>Reservista:</strong> <?php echo $ficha->reservista; ?></td>
+					</tr>
+					<tr>
+						<td style="width: 20%;"><strong>CTPS:</strong> <?php echo $ficha->ctps; ?></td>
+						<td style="width: 20%;"><strong>PIS:</strong> <?php echo $ficha->pis; ?></td>
+					</tr>
+				</tbody>
+		</table>
+	</p>
+
+		<p>
+		<table cellpadding="1" cellspacing="1" style="width: 100%;">
+			<caption>
+					<span style="font-size:20px;"><strong>Filiação</strong></span>
+			</caption>
+			<tbody>
+				<tr>
+					<td style="width: 20%;"><strong>Nome do Pai:</strong> <?php echo $ficha->pai; ?></td>
+					<td style="width: 20%;"><strong>Nome da Mãe:</strong> <?php echo $ficha->mae; ?></td>
+				</tr>
+			</tbody>
+		</table>
+		</p>
+	<p>
+		<?php if(count($ficha->instrucao)): ?>
+			<table cellpadding="1" cellspacing="1" style="width: 100%;">
+			<caption>
+					<span style="font-size:20px;"><strong>Nivel de Instrução</strong></span>
+			</caption>
+				<tbody>
+					<tr>
+						<th>Descrição</th>
+						<th>Instituição</th>
+						<th style="width: 20%;">Ano</th>
+						<th style="width: 20%;">Concluido</th>
+					</tr>
+						<?php foreach($ficha->instrucao as $inst): ?>
+							<tr>
+								<td><?php echo e($inst->descricao); ?> </td>
+								<td><?php echo e($inst->instituicao); ?></td>
+								<td><?php echo e($inst->ano); ?></td>
+								<td><?php echo e($inst->concluido); ?></td>
+							</tr>
+						<?php endforeach; ?>
+				</tbody>
+			</table>
+		<?php endif; ?>
+	</p>
+
+	<p>
+		<?php if(count($ficha->cursos)): ?>
+			<table cellpadding="1" cellspacing="1" style="width: 100%;">
+			<caption>
+					<span style="font-size:20px;"><strong>Cursos Extracurriculares</strong></span>
+			</caption>
+				<tbody>
+					<tr>
+						<th>Descrição</th>
+						<th>Instituição</th>
+						<th style="width: 20%;">Ano</th>
+						<th style="width: 20%;">Concluido</th>
+					</tr>
+						<?php foreach($ficha->cursos as $curso): ?>
+							<tr>
+								<td><?php echo e($curso->descricao); ?> </td>
+								<td><?php echo e($curso->instituicao); ?></td>
+								<td><?php echo e($curso->ano); ?></td>
+								<td><?php echo e($curso->concluido); ?></td>
+							</tr>
+						<?php endforeach; ?>
+				</tbody>
+			</table>
+		<?php endif; ?>
+	</p>
+
+	<p>
+		<?php if(count($ficha->empregos)): ?>
+			<table cellpadding="1" cellspacing="1" style="width: 100%;">
+				<caption>
+					<span style="font-size:20px;"><strong>Empregos Anteriores</strong></span>
+				</caption>
+				<tbody>
+					<tr>
+						<th>Empresa</th>
+						<th>Cargo</th>
+						<th style="width: 20%;">Admissão</th>
+						<th style="width: 20%;">Demissão</th>
+						<th style="width: 20%;">Motivo saida</th>
+					</tr>
+						<?php foreach($ficha->empregos as $emprego): ?>
+							<tr>
+								<td><?php echo e($emprego->empresa); ?> </td>
+								<td><?php echo e($emprego->cargo); ?></td>
+								<td><?php echo e($emprego->data_admissao); ?></td>
+								<td><?php echo e($emprego->data_demissao); ?></td>
+								<td><?php echo e($emprego->motivo); ?></td>
+							</tr>
+						<?php endforeach; ?>
+				</tbody>
+			</table>
+		<?php endif; ?>
+	</p>
+
+	<p>
+		<?php if(count($ficha->parentes)): ?>
+			<table cellpadding="1" cellspacing="1" style="width: 100%;">
+				<caption>
+					<span style="font-size:20px;"><strong>Parentes na Empresa</strong></span>
+				</caption>
+				<tbody>
+					<tr>
+						<th>Nome</th>
+						<th>Setor</th>
+						<th>Grau de Parentesco</th>
+					</tr>
+						<?php foreach($ficha->parentes as $parente): ?>
+							<tr>
+								<td><?php echo e($parente->nome); ?> </td>
+								<td><?php echo e($parente->setor); ?></td>
+								<td><?php echo e($parente->grau); ?></td>
+							</tr>
+						<?php endforeach; ?>
+				</tbody>
+			</table>
+		<?php endif; ?>
+	</p>
+
+	<p>
+		<?php if(count($ficha->setors)): ?>
+			<table cellpadding="1" cellspacing="1" style="width: 100%;">
+				<caption>
+					<span style="font-size:20px;"><strong>Setores Pretendidos</strong></span>
+				</caption>
+				<tbody>
+					<tr>
+						<th>Setor</th>
+						<th>Cargo</th>
+					</tr>
+						<?php foreach($ficha->setors as $setor): ?>
+							<tr>
+								<td><?php echo e($setor->setor->descricao); ?> </td>
+								<td><?php echo e($setor->cargo); ?></td>
+							</tr>
+						<?php endforeach; ?>
+				</tbody>
+			</table>
+		<?php endif; ?>
+	</p>
+	<p>
+		Entrevistado em: <?php echo $ficha->created_at; ?>
+	</p>
+
+	</body>
+</html>
