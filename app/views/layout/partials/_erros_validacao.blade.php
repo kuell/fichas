@@ -1,7 +1,16 @@
 <!-- BEGIN CONTENT -->
 <div class ="page-content-wrapper">
 		@if (Session::has('message'))
-		<div class="alert alert-warning fade in">
+		@if(!$errors->all())
+<?php
+$tipo = 'success';
+?>
+@else
+<?php
+$tipo = 'warning';
+?>
+@endif
+		<div class="alert alert-{{ $tipo }} fade in">
 			<button type="button" class="btn close" data-dismiss="alert" aria-hidden="true">
 				×
 			</button>

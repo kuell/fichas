@@ -1,0 +1,59 @@
+
+<?php $__env->startSection('content'); ?>
+<?php echo Form::open(array('route'=>['fichas.instrucao.store', $ficha->id] ,'class'=>'form')); ?>
+
+	    <?php echo Form::label('descricao', 'Descrição: '); ?>
+
+        <?php echo Form::select('descricao',[   ''    =>'Selecione ...',
+                                            'ENSINO FUNDAMENTAL'    => 'ENSINO FUNDAMENTAL',
+                                            'ENSINO MEDIO'          => 'ENSINO MÉDIO',
+                                            'ENSINO SUPERIOR'       => 'ENSINO SUPERIOR',
+                                            'POS GRADUACAO'         => 'POS GRADUAÇÃP'],
+                                            NULL,
+                                            ['class' => 'form-control col-md-5',
+                                             'placeholder' => 'Descrição do grau de ensino']); ?>
+	   <?php echo Form::label('instituicao', 'Instituição de ensino: '); ?>
+	   <?php echo Form::text('instituicao', null, array('ng-model'=>'instituicao', 'class'=>'form-control', 'placeholder'=>'Instituição')); ?>
+
+    <?php echo Form::label('ano', 'Ano: '); ?>
+    <?php echo Form::text('ano', null, array('class'=>'form-control numero', 'placeholder'=>'Ano')); ?>
+
+  	<?php echo Form::label('concluido', 'Concluido: '); ?>
+
+	<?php echo Form::radio('concluido', 1, false, array('ng-model'=>'concluido')); ?> Sim
+	<?php echo Form::radio('concluido', 0, false, array('ng-model'=>'concluido')); ?> Não
+
+    <?php echo Form::input('submit', null, 'Gravar',  array('class' => 'btn btn-info', 'ng-click'=>'addObj()')); ?>
+    <?php echo Form::close(); ?>
+<table class="table table-hover" ng-controller="InstrucaoCtrl">
+        <thead>
+            <tr>
+                <th>Descricao</th>
+                <th>Instituicao</th>
+                <th>Ano</th>
+                <th>Concluido</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php foreach($ficha->instrucao as $instrucao): ?>
+                <tr ng-repeat="obj in obts">
+                    <td><?php echo $instrucao->descricao; ?></td>
+                    <td><?php echo $instrucao->instituicao; ?></td>
+                    <td><?php echo $instrucao->ano; ?></td>
+                    <td><?php echo $instrucao->concluido; ?></td>
+                    <td>
+                        <a href="/fichas/instrucao/<?php echo $instrucao->id; ?>/delete" class="glyphicon glyphicon-trash">
+                        </a>
+                    </td>
+                    <td></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</script>
+
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('fichas.informacao', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

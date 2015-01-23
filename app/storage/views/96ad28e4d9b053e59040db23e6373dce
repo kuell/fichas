@@ -1,0 +1,113 @@
+<html>
+<head>
+	<title><?php echo e($ficha->nome); ?></title>
+	<style type="text/css">
+		body{
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		}
+		h3 {
+		  margin: .67em 0;
+		  font-size: 1em;
+		}
+	</style>
+
+</head>
+<body>
+	<div>
+		<div>
+			<address>
+		<h2><?php echo $ficha->nome; ?></h2>
+		<strong>Pretenção Salarial: </strong>
+			<span>R$ <?php echo e($ficha->pretencao); ?></span>
+
+		<br />
+			<h3 align="right">Dados Pessoais</h3><hr />
+			  <strong>Sexo: </strong> <?php echo e($ficha->sexo); ?><br>
+			  <strong>Data de Nascimento: </strong> <?php echo e($ficha->data_nascimento); ?> <br />
+			  <strong>Idade:</strong> <?php echo e($ficha->idade); ?> anos <br />
+			  <strong>Estado Civil: </strong> <?php echo e($ficha->estado_civil); ?><br>
+			  <strong>Endereço: </strong> <?php echo e($ficha->endereco); ?><br />
+			  <strong>Bairro: </strong> <?php echo e($ficha->bairro); ?> / 
+			  <strong>Cidade: </strong> <?php echo e($ficha->cidade); ?><br>
+			  <strong>Naturalidade: </strong> <?php echo e($ficha->naturalidade); ?>    <strong>Nacionalidade: </strong> <?php echo e($ficha->nacionalidade); ?> <br>
+			  <strong>Contato: </strong> <?php echo e($ficha->fone); ?> | <?php echo e($ficha->cel); ?><br>
+			  
+			<h3 align="right">Filiação</h3><hr />
+			  <strong>Pai: </strong> <?php echo e($ficha->pai); ?><br>
+			  <strong>Mãe: </strong> <?php echo e($ficha->mae); ?><br>
+
+			<h3 align="right">Documentação</h3><hr />
+			  <strong>RG: </strong> <?php echo e($ficha->rg); ?> <?php echo e($ficha->emissao); ?><br>
+			  <strong>CPF: </strong> <?php echo e($ficha->cpf); ?><br>
+			  <strong>Titulo de Eleitor: </strong> <?php echo e($ficha->titulo_eleitor); ?> <br>
+			  <strong>Reservista: </strong> <?php echo e($ficha->reservista); ?> <br>
+			  <strong>CTPS: </strong> <?php echo e($ficha->ctps); ?> <br>
+			  <strong>Pis: </strong> <?php echo e($ficha->pis); ?> <br>
+				
+
+			<h3 align="right">Nivel de Instrução</h3><hr />
+				<?php if(count($ficha->instrucao)): ?>
+					<?php foreach($ficha->instrucao as $inst): ?>
+						<strong>Descrição: </strong> <?php echo e($inst->descricao); ?><br>
+						<strong>Instituição: </strong> <?php echo e($inst->instituicao); ?><br>
+						<strong>Ano: </strong> <?php echo e($inst->ano); ?><br>
+						<strong>Concluido: </strong> <?php echo e($inst->concluido); ?><br> <br />
+					<?php endforeach; ?>
+				<?php else: ?>
+					Nenhum Nivel de Instrução Informado
+				<?php endif; ?>
+			</address> <br />
+
+			<h3 align="right">Cusos Extracurriculares</h3><hr />
+				<?php if(count($ficha->cursos)): ?>
+					<?php foreach($ficha->cursos as $inst): ?>
+						<strong>Descrição: </strong> <?php echo e($inst->descricao); ?><br>
+						<strong>Instituição: </strong> <?php echo e($inst->instituicao); ?><br>
+						<strong>Ano: </strong> <?php echo e($inst->ano); ?><br>
+						<strong>Concluido: </strong> <?php echo e($inst->concluido); ?><br> <br />
+					<?php endforeach; ?>
+				<?php else: ?>
+					Nenhum Curso informado
+				<?php endif; ?>
+			</address> <br />
+
+			<h3 align="right">Empregos Anteriores</h3><hr />
+				<?php if(count($ficha->empregos)): ?>
+					<?php foreach($ficha->empregos as $emprego): ?>
+						<strong>Empresa: </strong> <?php echo e($emprego->empresa); ?><br>
+						<strong>Cargo: </strong> <?php echo e($emprego->cargo); ?><br>
+						<strong>Data de Admissão: </strong> <?php echo e($emprego->data_admissao); ?><br>
+						<strong>Data de Demissão: </strong> <?php echo e($emprego->data_demissao); ?><br> <br />
+					<?php endforeach; ?>
+				<?php else: ?>
+					Nenhum Emprego informado.
+				<?php endif; ?>
+			</address> <br />
+
+			<h3 align="right">Parentes na Empresa</h3><hr />
+				<?php if(count($ficha->parentes)): ?>
+					<?php foreach($ficha->parentes as $parente): ?>
+						<strong>Nome: </strong> <?php echo e($parente->nome); ?><br>
+						<strong>Setor: </strong> <?php echo e($parente->setor); ?><br>
+						<strong>Grau de Parentesco: </strong> <?php echo e($parente->grau); ?><br>
+					<?php endforeach; ?>
+				<?php else: ?>
+					Nenhum Emprego informado.
+				<?php endif; ?>
+			</address> <br />
+
+			<h3 align="right">Setores Pretendidos</h3><hr />
+				<?php if(count($ficha->setors)): ?>
+					<?php foreach($ficha->setors as $setor): ?>
+						<strong>Setor: </strong> <?php echo e($setor->setor->descricao); ?><br>
+						<strong>Cargo: </strong> <?php echo e($setor->cargo); ?><br>
+					<?php endforeach; ?>
+				<?php else: ?>
+					Nenhum Setor informado.
+				<?php endif; ?>
+			</address> <br />
+			
+		</div>
+	</div> 
+</body>
+</html>

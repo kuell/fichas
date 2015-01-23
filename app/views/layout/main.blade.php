@@ -1,108 +1,83 @@
 <!DOCTYPE html>
-<html ng-app="App">
-
-<head>
-
+<html lang="en">
+  <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
-    <title>SIG - Sistema Interno de Gerenciamento</title>
+    <title>Solicitação de Emprego</title>
 
-    <!-- Core CSS - Include with every page -->
-    {{ HTML::style('assets/css/bootstrap.min.css') }}
-    {{ HTML::style('assets/font-awesome/css/font-awesome.css')}}
+    <!-- Bootstrap core CSS -->
+    {{ HTML::style('css/bootstrap.min.css') }}
+    {{ HTML::style('css/AdminLTE.css') }}
 
-    <!-- Page-Level Plugin CSS - Dashboard -->
-    {{ HTML::style('assets/css/plugins/morris/morris-0.4.3.min.css')}}
-    {{ HTML::style('assets/css/plugins/timeline/timeline.css')}}
+    <style type="text/css">
+      .panel-right {
 
-    <!-- SB Admin CSS - Include with every page -->
-    {{ HTML::style('assets/css/sb-admin.css') }}
+  border: 0.05em solid lightgray;
 
-</head>
+  border-radius: 0.25em 0.25em;
 
-<body>
+  margin-top: -0.2em;
 
-    <div id="wrapper">
+  padding: 0.3em;
 
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">Frizelo Frigorificos Ltda.</a>
-            </div>
-            <!-- /.navbar-header -->
-            @include('layout.partials._menu_usuario')
-            <!-- /.navbar-top-links -->
-            @include('layout.partials._menu_navega')
-            <!-- /.navbar-static-side -->
-        </nav>
+  font-size: 0.9em;
 
-        <div id="page-wrapper">
-             @yield('main')
+  float: right;
+
+}
+
+
+
+  .panel-title a,
+
+  .panel-title a:active,
+
+  .panel-title a:visited {
+
+    text-decoration: none;
+
+  }
+    </style>
+
+    <!-- Custom styles for this template -->
+    {{ HTML::style('css/navbar-static-top.css') }}
+  </head>
+
+  <body>
+    <!-- Static navbar -->
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Frizelo Frigorificos Ltda.</a>
         </div>
+      </div>
+    </nav>
+    <div class="container col-md-12">
+      @yield('main')
+    </div> <!-- /container -->
+    {{ HTML::script('js/jquery.js') }}
+    {{ HTML::script('js/jquery.maskMoney.js') }}
+    {{ HTML::script('js/jquery.maskedinput.js') }}
+    {{ HTML::script('js/bootstrap.js') }}
+    {{ HTML::script('js/jquery.dataTables.js') }}
+    {{ HTML::script('js/script.js') }}
 
-        <!-- /#page-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
-
-    <!-- Core Scripts - Include with every page -->
-    {{ HTML::script('assets/js/jquery-1.10.2.js') }}
-    {{ HTML::script('assets/js/bootstrap.min.js') }}
-    {{ HTML::script('assets/js/plugins/metisMenu/jquery.metisMenu.js') }}
-    {{ HTML::script('assets/js/jquery.maskMoney.js') }}
-    {{ HTML::script('assets/js/jquery.maskedinput.js') }}
-    {{ HTML::script('assets/js/jquery.maskedinput.js') }}
-
-    {{ HTML::script('assets/js/script.js') }}
-    {{ HTML::script('assets/js/angular.min.js') }}
-
-    <!-- Page-Level Plugin Scripts - Tables -->
-    {{ HTML::script('assets/js/plugins/dataTables/jquery.dataTables.js') }}
-    {{ HTML::script('assets/js/plugins/dataTables/dataTables.bootstrap.js') }}
-
-    <!-- SB Admin Scripts - Include with every page -->
-    {{ HTML::script('assets/js/sb-admin.js') }}
-
-    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
-    $(document).ready(function() {
-        $('#dataTables-example').dataTable({
-        "language": {
-            "lengthMenu": "Mostrar _MENU_ registros por pagina",
-            "zeroRecords": "Nenhum registro retornado.",
-            "info": "Mostrando pagina _PAGE_ de _PAGES_",
-            "infoEmpty": "Nenhum registro disponivel",
-            "infoFiltered": "(filtro aplicado em _MAX_ total registros)",
-            "previousSearch":" Ola"
-        }
-    });
-    });
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $('#dataTables-example').dataTable();
+      });
+      @yield('scripts')
     </script>
-    <script>
-        var App = angular.module('App',[]);
-
-        App.config(function($interpolateProvider) {
-            $interpolateProvider.startSymbol('%%');
-            $interpolateProvider.endSymbol('%%');
-        });
-        function ListaComprasController($scope) {
-        $scope.itens = [
-        {produto: 'Leite', quantidade: 2, comprado: false},
-        {produto: 'Cerveja', quantidade: 12, comprado: false}
-        ];
-    }
-
-    </script>
-
-
-    <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
-
-</body>
-
+  </body>
 </html>

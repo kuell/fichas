@@ -1,32 +1,42 @@
 <html>
 	<head>
 		<title></title>
-
 		<style type="text/css">
-		*{
-			font-family: Verdana;
-		}
 		table{
-			font-size: 14px;
-			border: 1px solid;
+			font-family: "Colibri";
+			font-size: 11px;
+			border: 0;
 		}
-
+		table td{
+			font-size: 10px;
+		}
 		table th{
-			border-bottom: .5px solid;
 			text-align: left;
+			border-left: 1px solid;
+			border-bottom: 1px solid;
+			font-size: 12px;
+			color: #555;
 		}
-		span strong{
-			font-size: 20px;
-
-			}	
+		.titulo{
+			text-align: center;
+			font-size: 14px;
+			color: #000;
+			background: #888;
+			border : 0;
+		}
 		</style>
 	</head>
 	<body>
+	<h1>Frizelo Frigorificos Ltda.</h1>
 	<p>
 		<table cellpadding="0" cellspacing="0" style="width: 100%;">
-			<caption>
-					<span style="font-size:20px;"><strong>Dados Pessoais</strong></span>
-			</caption>
+				<thead>
+					<tr>
+						<th colspan="2" class="titulo">
+							<span><strong> - Dados Pessoais - </strong></span>
+						</th>
+					</tr>
+				</thead>
 				<tbody>
 					<tr>
 						<td align="center" rowspan="8" style="width:180px; height: 150px; ">
@@ -41,11 +51,13 @@
 					</tr>
 					<tr>
 						<td>
-							<strong>Data Nascimento:&nbsp;</strong>{{ $ficha->data_nascimento }} - {{ $ficha->idade }} anos</td>
+							<strong>Data Nascimento:&nbsp;</strong>{{ $ficha->data_nascimento }} - {{ $ficha->idade }} anos
+						</td>
 					</tr>
 					<tr>
 						<td>
-							<strong>Estado Civil:</strong> {{ $ficha->estado_civil }}</td>
+							<strong>Estado Civil:</strong> {{ $ficha->estadoCivilDesc($ficha->estado_civil) }}
+						</td>
 					</tr>
 					<tr>
 						<td>
@@ -71,32 +83,39 @@
 		</table>
 	</p>
 	<p>
-		<table  cellpadding="1" cellspacing="1" style="width: 100%;">
-			<caption>
-					<span style="font-size:20px;"><strong>Documentação</strong></span>
-			</caption>
-				<tbody>
-					<tr>
-						<td style="width: 20%;"><strong>RG:</strong> {{ $ficha->rg }}</td>
-						<td style="width: 20%;"><strong>CPF:</strong> {{ $ficha->cpf }}</td>
-					</tr>
-					<tr>
-						<td style="width: 20%;"><strong>Titulo de Eleitor:</strong> {{ $ficha->titulo }}</td>
-						<td style="width: 20%;"><strong>Reservista:</strong> {{ $ficha->reservista }}</td>
-					</tr>
-					<tr>
-						<td style="width: 20%;"><strong>CTPS:</strong> {{ $ficha->ctps }}</td>
-						<td style="width: 20%;"><strong>PIS:</strong> {{ $ficha->pis }}</td>
-					</tr>
-				</tbody>
+		<table  cellpadding="0" cellspacing="0" style="width: 100%;">
+			<thead>
+				<tr>
+					<th colspan="2" class="titulo"><span><strong>Documentação</strong></span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td style="width: 20%;"><strong>RG:</strong> {{ $ficha->rg }}</td>
+					<td style="width: 20%;"><strong>CPF:</strong> {{ $ficha->cpf }}</td>
+				</tr>
+				<tr>
+					<td style="width: 20%;"><strong>Titulo de Eleitor:</strong> {{ $ficha->titulo }}</td>
+					<td style="width: 20%;"><strong>Reservista:</strong> {{ $ficha->reservista }}</td>
+				</tr>
+				<tr>
+					<td style="width: 20%;"><strong>CTPS:</strong> {{ $ficha->ctps }}</td>
+					<td style="width: 20%;"><strong>PIS:</strong> {{ $ficha->pis }}</td>
+				</tr>
+			</tbody>
 		</table>
 	</p>
 
 		<p>
 		<table cellpadding="1" cellspacing="1" style="width: 100%;">
-			<caption>
-					<span style="font-size:20px;"><strong>Filiação</strong></span>
-			</caption>
+			<thead>
+					<tr>
+						<th colspan="2" class="titulo">
+							<span><strong>Filiação</strong></span>
+						</th>
+					</tr>
+
+				</thead>
 			<tbody>
 				<tr>
 					<td style="width: 20%;"><strong>Nome do Pai:</strong> {{ $ficha->pai }}</td>
@@ -108,9 +127,14 @@
 	<p>
 		@if(count($ficha->instrucao))
 			<table cellpadding="1" cellspacing="1" style="width: 100%;">
-			<caption>
-					<span style="font-size:20px;"><strong>Nivel de Instrução</strong></span>
-			</caption>
+			<thead>
+					<tr>
+						<th colspan="4" class="titulo">
+							<span><strong>Nivel de Instrução</strong></span>
+						</th>
+					</tr>
+
+				</thead>
 				<tbody>
 					<tr>
 						<th>Descrição</th>
@@ -134,9 +158,14 @@
 	<p>
 		@if(count($ficha->cursos))
 			<table cellpadding="1" cellspacing="1" style="width: 100%;">
-			<caption>
-					<span style="font-size:20px;"><strong>Cursos Extracurriculares</strong></span>
-			</caption>
+			<thead>
+					<tr>
+						<th colspan="4" class="titulo">
+							<span><strong>Cursos Extracurriculares</strong></span>
+						</th>
+					</tr>
+
+				</thead>
 				<tbody>
 					<tr>
 						<th>Descrição</th>
@@ -160,9 +189,14 @@
 	<p>
 		@if(count($ficha->empregos))
 			<table cellpadding="1" cellspacing="1" style="width: 100%;">
-				<caption>
-					<span style="font-size:20px;"><strong>Empregos Anteriores</strong></span>
-				</caption>
+				<thead>
+					<tr>
+						<th colspan="5" class="titulo">
+							<span><strong>Empregos Anteriores</strong></span>
+						</th>
+					</tr>
+
+				</thead>
 				<tbody>
 					<tr>
 						<th>Empresa</th>
@@ -188,9 +222,14 @@
 	<p>
 		@if(count($ficha->parentes))
 			<table cellpadding="1" cellspacing="1" style="width: 100%;">
-				<caption>
-					<span style="font-size:20px;"><strong>Parentes na Empresa</strong></span>
-				</caption>
+				<thead>
+					<tr>
+						<th colspan="3" class="titulo">
+							<span><strong>Parentes na Empresa</strong></span>
+						</th>
+					</tr>
+
+				</thead>
 				<tbody>
 					<tr>
 						<th>Nome</th>
@@ -212,9 +251,14 @@
 	<p>
 		@if(count($ficha->setors))
 			<table cellpadding="1" cellspacing="1" style="width: 100%;">
-				<caption>
-					<span style="font-size:20px;"><strong>Setores Pretendidos</strong></span>
-				</caption>
+				<thead>
+					<tr>
+						<th colspan="2" class="titulo">
+							<span><strong>Pretensão de Setores / Funções</strong></span>
+						</th>
+					</tr>
+
+				</thead>
 				<tbody>
 					<tr>
 						<th>Setor</th>

@@ -1,0 +1,52 @@
+
+<?php $__env->startSection('content'); ?>
+    <?php echo Form::open(array('url' => 'fichas/cursos/'.$ficha->id, 'class'=>'form-horizontal')); ?>
+
+    	<?php echo Form::label('descricao', 'Descrição: '); ?>
+        <?php echo Form::text('descricao', null, array('class'=>'form-control', 'placeholder'=>'Descrição do curso')); ?>
+
+    	<?php echo Form::label('instituicao', 'Instituição de ensino: '); ?>
+    	<?php echo Form::text('instituicao', null, array('class'=>'form-control', 'placeholder'=>'Instituição')); ?>
+
+       	<?php echo Form::label('ano', 'Ano: '); ?>
+       	<?php echo Form::text('ano', null, array('class'=>'form-control numero', 'placeholder'=>'Ano')); ?>
+
+      	<?php echo Form::label('concluido', 'Concluido: '); ?>
+        	<?php echo Form::radio('concluido', 1, false); ?> Sim
+        	<?php echo Form::radio('concluido', 0, false); ?> Não
+
+        <?php echo Form::submit('Gravar', array('class' => 'btn btn-info')); ?>
+
+    <?php echo Form::close(); ?>
+
+<?php if (count($ficha->cursos)): ?>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Descricao do Curso</th>
+				<th>Instituicao</th>
+				<th>Ano</th>
+				<th>Concluido</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<?php foreach ($ficha->cursos as $curso): ?>
+				<tr>
+					<td><?php echo e($curso->descricao); ?></td>
+					<td><?php echo e($curso->instituicao); ?></td>
+					<td><?php echo e($curso->ano); ?></td>
+					<td><?php echo e($curso->concluido); ?></td>
+                    <td>
+                        <a href="/fichas/cursos/<?php echo $curso->id; ?>/delete" class="glyphicon glyphicon-trash">
+                        </a>
+                    </td>
+                    <td></td>
+				</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+<?php endif; ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('fichas.informacao', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

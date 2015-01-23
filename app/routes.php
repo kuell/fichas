@@ -9,56 +9,33 @@
 | It's a breeze. Simply tell Laravel the URIs it should respond to
 | and give it the Closure to execute when that URI is requested.
 |
-*/
+ */
 
-Route::get('/', function(){
-	return View::make('hello');
-});
+Route::get('/', function () {
+		return Redirect::to('/fichas');
+	});
 
-Route::resource('setors', 'SetorsController');
+Route::resource('/fichas', 'FichasController');
+Route::get('/fichas/informacao/{id}', 'FichasController@getInformacao');
 
-Route::resource('funcionarios', 'FuncionariosController');
-
-Route::resource('funcionario_setors', 'Funcionario_setorsController');
-
-Route::resource('setors', 'SetorsController');
-
-Route::resource('funcionario_ocorrencia', 'Funcionario_ocorrenciaController');
-
-Route::resource('funcionario_ocorrencia', 'Funcionario_ocorrenciaController');
-
-Route::resource('fichas', 'FichasController');
-
-Route::get('fichas/instrucao/{id}', 'FichasController@getInstrucao');
-Route::post('fichas/instrucao/{id}', 'FichasController@setInstrucao');
+Route::get('fichas/instrucao/{id}', ['as'  => 'fichas.instrucao', 'uses'  => 'FichasController@getInstrucao']);
+Route::post('fichas/instrucao/{id}', ['as' => 'fichas.instrucao.store', 'uses' => 'FichasController@setInstrucao']);
 Route::get('fichas/instrucao/{id}/delete', 'FichasController@destroyInstrucao');
 
-Route::get('fichas/cursos/{id}', 'FichasController@getCursos');
+Route::get('fichas/cursos/{id}', ['as' => 'fichas.curso', 'uses' => 'FichasController@getCursos']);
 Route::post('fichas/cursos/{id}', 'FichasController@setCursos');
 Route::get('fichas/cursos/{id}/delete', 'FichasController@destroyCursos');
 
-Route::get('fichas/empregos/{id}', 'FichasController@getEmpregos');
+Route::get('fichas/empregos/{id}', ['as' => 'fichas.emprego', 'uses' => 'FichasController@getEmpregos']);
 Route::post('fichas/empregos/{id}', 'FichasController@setEmpregos');
 Route::get('fichas/empregos/{id}/delete', 'FichasController@destroyEmpregos');
 
-Route::get('fichas/parentes/{id}', 'FichasController@getParentes');
+Route::get('fichas/parentes/{id}', ['as' => 'fichas.parente', 'uses' => 'FichasController@getParentes']);
 Route::post('fichas/parentes/{id}', 'FichasController@setParentes');
 Route::get('fichas/parentes/{id}/delete', 'FichasController@destroyParentes');
 
-Route::get('fichas/setors/{id}', 'FichasController@getSetors');
+Route::get('fichas/setors/{id}', ['as' => 'fichas.setor', 'uses' => 'FichasController@getSetors']);
 Route::post('fichas/setors/{id}', 'FichasController@setSetors');
 Route::get('fichas/setors/{id}/delete', 'FichasController@destroySetors');
 
 Route::post('buscaRg', 'FichasController@buscaRg');
-
-Route::get('importar', 'ImportarController@importar');
-
-Route::resource('ficha_instrucaos', 'Ficha_instrucaosController');
-
-Route::resource('ficha_empregos', 'Ficha_empregosController');
-
-Route::resource('ficha_cursos', 'Ficha_cursosController');
-
-Route::resource('ficha_parentes', 'Ficha_parentesController');
-
-Route::resource('ficha_setors', 'Ficha_setorsController');

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<?php echo HTML::style('css/bootstrap.css'); ?>
+	<?php echo HTML::script('js/jquery.js'); ?>
+	<?php echo HTML::script('js/jquery.maskedinput.js'); ?>
+	<?php echo HTML::script('js/jquery.maskMoney.js'); ?>
+	<?php echo HTML::script('js/script.js'); ?>
+</head>
+<body>
+
+<!-- BEGIN CONTENT -->
+<div class ="page-content-wrapper">
+		<?php if (Session::has('message')): ?>
+		<div class="alert alert-warning fade in">
+			<button type="button" class="btn close" data-dismiss="alert" aria-hidden="true">
+				×
+			</button>
+			<strong>
+				<?php echo Session::get('message'); ?>
+			</strong>
+			<?php if ($errors->any()): ?>
+				<ul>
+					<?php echo implode('', $errors->all('<li class="error">:message</li>')); ?>
+				</ul>
+			<?php endif; ?>
+		</div>
+</div>
+		<?php endif; ?>
+<!-- END CONTENT -->
+
+
+<div>
+	<?php echo link_to_route('fichas.instrucao', 'Nivel de Instrucao', $ficha->id, ['class'=>'btn btn-primary']); ?>
+	<?php echo link_to_route('fichas.curso', 'Cursos Extra', $ficha->id, ['class'=>'btn btn-primary']); ?>
+	<?php echo link_to_route('fichas.emprego', 'Empregos Anteriores', $ficha->id, ['class'=>'btn btn-primary']); ?>
+	<?php echo link_to_route('fichas.parente', 'Familiares na Empresa', $ficha->id, ['class'=>'btn btn-primary']); ?>
+	<?php echo link_to_route('fichas.setor', 'Pretensão de Setores / Funções', $ficha->id, ['class'=>'btn btn-primary']); ?>
+</div>
+<div class="col-md-11">
+	<?php echo $__env->yieldContent('content'); ?>
+</div>
+
+</body>
+</html>

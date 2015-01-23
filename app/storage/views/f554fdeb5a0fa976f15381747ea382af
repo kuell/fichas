@@ -1,0 +1,62 @@
+
+<?php $__env->startSection('main'); ?>
+<?php echo Form::model($ficha, array('method'=>'PATCH', 'route'=>array('fichas.update', $ficha->id))); ?>
+<div class    ="row ">
+    <div class="col-md-12">
+        <!-- BEGIN SAMPLE FORM PORTLET -->
+        <div class        ="panel panel-primary">
+            <div class    ="panel-heading">
+                <h1 class="panel-title">
+                    Alterar Ficha: <?php echo $ficha->nome; ?>
+
+                    <button type="button" class="panel-right btn-danger" onclick="location.href = '/fichas'">
+                        <span class="glyphicon glyphicon-remove"></span>
+                        Sair
+                    </button>
+
+                    <a href="#" class="panel-right glyphicon glyphicon-print btn-info" onclick="window.open('/fichas/<?php echo $ficha->id; ?>', 'Print', 'channelmode=yes');">
+                    Imprimir
+                    </a>
+                    <a href="#" class="panel-right glyphicon glyphicon-info-sign btn-warning" data-toggle="modal" data-target="#myModal">
+                        Informações Adicionais
+                    </a>
+                    <button type="submit" class="panel-right btn-primary">
+                        <span class=" glyphicon glyphicon-floppy-disk"></span>Gravar
+                    </button>
+
+                </h1>
+            </div>
+            <div class="panel-body">
+                <?php echo $__env->make('layout.partials._erros_validacao', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
+                    <?php echo $__env->make('fichas._form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+            </div>
+        </div>
+    </div>
+</div>
+<?php echo Form::close(); ?>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Informações Adicionais</h4>
+      </div>
+      <div class="modal-body">
+        <iframe src="/fichas/informacao/<?php echo $ficha->id; ?>" width="840" height="500" frameborder="0" allowtransparency="true"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scripts'); ?>
+    $("input[name=rg]").removeClass('validaRg')
+<?php $__env->stopSection(); ?>
+
+
+
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,31 @@
+
+<?php $__env->startSection('main'); ?>
+ <?php echo Form::open(array('route' => 'fichas.store', 'class'=>'form-horizontal')); ?>
+<div class    ="row ">
+    <div class="col-md-12">
+        <!-- BEGIN SAMPLE FORM PORTLET -->
+        <div class        ="panel panel-primary">
+            <div class    ="panel-heading">
+                <div class="panel-title">
+                    Nova Fihca Ficha
+                    <button type="button" class="panel-right btn-danger" onclick="location.href = '/fichas'">
+                        <span class="glyphicon glyphicon-remove"></span>
+                        Sair
+                    </button>
+
+                    <button type="submit" class="panel-right btn-primary">
+                        <span class=" glyphicon glyphicon-floppy-disk"></span>Gravar</button>
+                </div>
+            </div>
+            <div class="panel-body">
+                <?php echo $__env->make('layout.partials._erros_validacao', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+                    <?php echo $__env->make('fichas._form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+            </div>
+        </div>
+    </div>
+</div>
+<?php echo Form::close(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
