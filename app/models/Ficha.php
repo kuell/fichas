@@ -76,4 +76,8 @@ class Ficha extends Eloquent {
 			}
 		}
 	}
+	public function getCreatedAtAttribute() {
+		$d = date('d/m/Y H:i', strtotime($this->attributes['created_at']));
+		return $d;
+	}
 }

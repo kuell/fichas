@@ -24,10 +24,17 @@
 			background: #888;
 			border : 0;
 		}
+		.rodape{
+			text-align: right;
+			font-size: 8px;
+		}
 		</style>
 	</head>
 	<body>
 	<h1>Frizelo Frigorificos Ltda.</h1>
+	<p class="rodape">
+		Entrevistado em: {{ $ficha->created_at }}
+	</p>
 	<p>
 		<table cellpadding="0" cellspacing="0" style="width: 100%;">
 				<thead>
@@ -274,9 +281,5 @@
 			</table>
 		@endif
 	</p>
-	<p>
-		Entrevistado em: {{ $ficha->created_at }}
-	</p>
-
 	</body>
 </html>
